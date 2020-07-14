@@ -1,11 +1,11 @@
 import React from "react";
 import "./homepage.styles.scss";
-import DirectoryMenu from "../components/directoryMenu/DirectoryMenu";
+import DirectoryMenuComponent from "../components/directory-menu/directory-menu.component";
 
 export default function Homepage () {
     return (
         <div className="homepage">
-            <DirectoryMenu/>
+            <DirectoryMenuComponent/>
         </div>
     )
 }

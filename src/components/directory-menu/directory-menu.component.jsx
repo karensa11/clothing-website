@@ -1,9 +1,9 @@
 import React from "react";
-import "./directoryMenu.scss";
+import "./directory-menu.styles.scss";
 import sections from "../../data/directory.data";
-import MenuItem from "../menuItem/MenuItem";
+import MenuItem from "../menu-item/menu-item.component";
 
-export default function DirectoryMenu() {
+export default function DirectoryMenuComponent() {
     return (
         <div className="directory-menu">
             {sections.map (({id, ...section}) => {
