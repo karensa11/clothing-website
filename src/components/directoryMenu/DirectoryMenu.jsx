@@ -6,12 +6,11 @@ import MenuItem from "../menuItem/MenuItem";
 export default function DirectoryMenu() {
     return (
         <div className="directory-menu">
-            {sections.map (({title, imageUrl, size, id}) => {
+            {sections.map (({id, ...section}) => {
                 return (
                     <MenuItem
-                        title={title}
-                        imageUrl={imageUrl}
-                        size={size}
+                        key={id}
+                        {...section}
                         />
                 )
             })}
