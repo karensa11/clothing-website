@@ -15,7 +15,7 @@ export default function CollectionItem
             />
             <div className="collection-footer">
                 <div className="name">{name}</div>
-                <div className="price">{price}</div>
+                <div className="price">${price}</div>
             </div>
         </div>
     )
