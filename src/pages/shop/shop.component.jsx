@@ -1,6 +1,6 @@
 import React from "react";
 import collections from "../../data/shop-items.data";
-import CollectionPreviewComponent from "../collection-preview/collection-preview.component";
+import CollectionPreviewComponent from "../../components/collection-preview/collection-preview.component";
 
 export default function ShopComponent() {
     return (

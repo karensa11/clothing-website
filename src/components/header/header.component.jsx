@@ -12,8 +12,9 @@ export default function Header()
                 <Logo />
             </Link>
             <div className="options">
-                <Link to="/shop" className="option">SHOP</Link>
-                <Link to="/shop" className="option">CONTACT</Link>
+                <Link to="/shop" className="option" title="view all our catalogs">SHOP</Link>
+                <Link to="/shop" className="option" title="contact us for any query">CONTACT</Link>
+                <Link to="/signIn" className="option">SIGN IN</Link>
             </div>
         </div>
     )
