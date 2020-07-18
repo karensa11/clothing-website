@@ -6,14 +6,13 @@ import ShopComponent from "./pages/shop/shop.component";
 import Header from "./components/header/header.component";
 import SignInAndSignUp from "./pages/sign-in-and-sign-up/sign-in-and-sign-up.component";
 import {auth, createUserProfileDocument} from "./firebase/firebase.utils";
+import {connect} from "react-redux";
+import * as userActions from "./redux/user/user-actions";
 
 class App extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
-
-        this.state = {
-            currentUser: null
-        }
+        this.props.removeCurrentUser();
     }
     unsubscribeFromAuth = null;
     componentDidMount() {
@@ -21,16 +20,16 @@ class App extends Component {
             if(user) {
                 const userRef = await createUserProfileDocument(user);
                 userRef.onSnapshot(snapshot => { // get the actual document
-                    this.setState({
+                    this.props.setCurrentUser({
                         currentUser: {
                             id: snapshot.id,
                             ...snapshot.data() // gt the document content
                         }
-                    })
+                    });
                 });
             }
             else {
-                this.setState({currentUser: null});
+                this.props.removeCurrentUser();
             }
         })
     }
@@ -42,7 +41,7 @@ class App extends Component {
         return (
             <BrowserRouter>
                 <div className="content">
-                    <Header currentUser={this.state.currentUser} />
+                    <Header />
                     <Switch>
                         <Route exact path="/" component={HomepageComponent}/>
                         <Route exact path="/shop" component={ShopComponent}/>
@@ -54,4 +53,9 @@ class App extends Component {
     }
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => ({
+    setCurrentUser: (user) => dispatch(userActions.setCurrentUser(user)),
+    removeCurrentUser: (user) => dispatch(userActions.removeCurrentUser())
+});
+
+export default connect(null, mapDispatchToProps)(App);
