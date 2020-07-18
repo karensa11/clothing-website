@@ -33,8 +33,14 @@ $main-color: black;
     }
   }
 
-  input[type='password'] {
-    letter-spacing: 0.3em;
+  .password {
+    display: inline-block;
+    width: 92%;
+    padding: 0;
+
+    &.hidden {
+      letter-spacing: 0.3em;
+    }
   }
 
   .form-input-label {
