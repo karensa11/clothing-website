@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {BrowserRouter, Switch, Route} from "react-router-dom";
+import {BrowserRouter, Switch, Route, Redirect} from "react-router-dom";
 import './App.css';
 import HomepageComponent from "./pages/homepage/homepage.component";
 import ShopComponent from "./pages/shop/shop.component";
@@ -12,7 +12,6 @@ import * as userActions from "./redux/user/user-actions";
 class App extends Component {
     constructor(props) {
         super(props);
-        this.props.removeCurrentUser();
     }
     unsubscribeFromAuth = null;
     componentDidMount() {
@@ -45,7 +44,9 @@ class App extends Component {
                     <Switch>
                         <Route exact path="/" component={HomepageComponent}/>
                         <Route exact path="/shop" component={ShopComponent}/>
-                        <Route exact path="/signIn" component={SignInAndSignUp}/>
+                        <Route exact path="/signIn" render={() => this.props.currentUser ?
+                                <Redirect to="/" /> : <SignInAndSignUp />
+                        } />
                     </Switch>
                 </div>
             </BrowserRouter>
@@ -53,9 +54,13 @@ class App extends Component {
     }
 }
 
+const mapStateToProps = (state) => ({
+    currentUser: state.userNs.currentUser
+})
+
 const mapDispatchToProps = (dispatch) => ({
     setCurrentUser: (user) => dispatch(userActions.setCurrentUser(user)),
     removeCurrentUser: (user) => dispatch(userActions.removeCurrentUser())
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
