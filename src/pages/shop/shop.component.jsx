@@ -8,6 +8,7 @@ export default function ShopComponent() {
             {collections.map(({id, ...collection}) => {
                 return (
                     <CollectionPreviewComponent
+                        key={id}
                         {...collection}
                     />
                 )
