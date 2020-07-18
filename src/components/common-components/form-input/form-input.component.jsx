@@ -22,6 +22,7 @@ export default class FormInput extends Component
         const {type} = this.props;
         const otherProps = {...this.props};
         delete otherProps.type;
+        delete otherProps.handleChange;
         const inputType = type === PASSWORD_TYPE && !this.state.passwordHidden ?
             "" : type;
         return (

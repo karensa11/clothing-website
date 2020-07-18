@@ -23,8 +23,6 @@ provider.setCustomParameters({prompt: 'select_account'});
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
 
 export async function createUserProfileDocument(user) {
-    console.log('creating user with details');
-    console.log(user);
     const ref = firestore.doc(`users/${user.uid}`);
     const snapshot = await ref.get();
     if(!snapshot.exists) { // create the entry for the user if not found

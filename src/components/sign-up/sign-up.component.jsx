@@ -37,7 +37,7 @@ export default class SignUp extends Component
             });
         }
         catch(err) {
-            console.log("failed to create", err.message);
+            alert(err.message);
         }
 
     };
@@ -61,12 +61,14 @@ export default class SignUp extends Component
                     <FormInput
                         handleChange={this.handleChange}
                         name="email"
+                        type="email"
                         value={this.state.email}
                         label="email"
                     />
                     <FormInput
                         handleChange={this.handleChange}
                         name="password"
+                        type="password"
                         value={this.state.password}
                         label="password"
                         title="at least 6 characters"
@@ -74,6 +76,7 @@ export default class SignUp extends Component
                     <FormInput
                         handleChange={this.handleChange}
                         name="confirmPassword"
+                        type="password"
                         value={this.state.confirmPassword}
                         label="confirm password"
                     />

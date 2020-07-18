@@ -23,7 +23,7 @@ export default class SignIn extends Component
             await auth.signInWithEmailAndPassword(email, password);
             this.setState({email: "", password: ""});
         } catch (err) {
-            console.log("failed with error ", err.message);
+            alert(err.message);
         }
     };
 
@@ -37,7 +37,7 @@ export default class SignIn extends Component
         return (
             <div className="sign-in">
                 <form onSubmit={this.handleSubmit}>
-                    <h1>I already have an account</h1>
+                    <h1 className="title">I already have an account</h1>
                     <span>Sign in with your email and password</span>
                     <FormInput type="email" label="email" name="email"
                                value={this.state.email} handleChange={this.updateValue} required />
