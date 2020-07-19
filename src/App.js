@@ -10,9 +10,6 @@ import {connect} from "react-redux";
 import * as userActions from "./redux/user/user-actions";
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-    }
     unsubscribeFromAuth = null;
     componentDidMount() {
         this.unsubscribeFromAuth = auth.onAuthStateChanged( async user => {
@@ -56,7 +53,7 @@ class App extends Component {
 
 const mapStateToProps = (state) => ({
     currentUser: state.userNs.currentUser
-})
+});
 
 const mapDispatchToProps = (dispatch) => ({
     setCurrentUser: (user) => dispatch(userActions.setCurrentUser(user)),

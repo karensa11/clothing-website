@@ -14,11 +14,11 @@ export default function CollectionPreviewComponent
             <div className="preview">
                 {items
                     .filter((item, index) => {return index < 4})
-                    .map(({id, ...item}) => {
+                    .map((item) => {
                         return (
                             <CollectionItem
-                                key={id}
-                                {...item}
+                                key={item.id}
+                                item={item}
                                 />
                     )})}
             </div>

@@ -6,6 +6,8 @@ import {Link} from "react-router-dom";
 import {auth} from "../../firebase/firebase.utils";
 import {connect} from "react-redux";
 import * as PropTypes from "prop-types";
+import CartIcon from "../cart-icon/cart-icon.component";
+import CartDropdown from "../cart/cart-dropdown.component";
 
 class Header extends Component {
     render() {
@@ -13,7 +15,7 @@ class Header extends Component {
         return (
             <div className="header">
                 <Link className="logo-container" to="/">
-                    <Logo/>
+                    <Logo />
                 </Link>
                 <div className="options">
                     <Link to="/shop" className="option" title="view all our catalogs">SHOP</Link>
@@ -24,6 +26,8 @@ class Header extends Component {
                         :
                         <Link to="/signIn" className="option" title="sign in">SIGN IN</Link>
                     }
+                    <CartIcon />
+                    {this.props.cartHidden ? null : <CartDropdown />}
                 </div>
             </div>
         )
@@ -34,7 +38,8 @@ Header.propTypes = {currentUser: PropTypes.any};
 
 const mapStateToProps = (state) => {
     return {
-        currentUser: state.userNs.currentUser
+        currentUser: state.userNs.currentUser,
+        cartHidden: state.cartNs.hidden
     }
 };
 
