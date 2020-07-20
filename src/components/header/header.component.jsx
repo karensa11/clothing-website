@@ -8,6 +8,9 @@ import {connect} from "react-redux";
 import * as PropTypes from "prop-types";
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
+import {cartHiddenSelector} from "../../redux/cart/cart-selector";
+import {currentUserSelector} from "../../redux/user/user-selector";
+import {createStructuredSelector} from "reselect";
 
 class Header extends Component {
     render() {
@@ -36,11 +39,9 @@ class Header extends Component {
 
 Header.propTypes = {currentUser: PropTypes.any};
 
-const mapStateToProps = (state) => {
-    return {
-        currentUser: state.userNs.currentUser,
-        cartHidden: state.cartNs.hidden
-    }
-};
+const mapStateToProps = createStructuredSelector({
+    currentUser: currentUserSelector,
+    cartHidden: cartHiddenSelector
+});
 
 export default connect(mapStateToProps)(Header);

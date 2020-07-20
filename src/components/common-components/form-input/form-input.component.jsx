@@ -27,9 +27,11 @@ export default class FormInput extends Component
             "" : type;
         return (
             <div className="group">
-                <input className={`${type} ${this.state.passwordHidden ? "hidden":""} form-input`}
-                       type={inputType}
-                       onChange={this.props.handleChange} {...otherProps} />
+                <input  className={`${type} ${this.state.passwordHidden ? "hidden":""} form-input`}
+                        type={inputType}
+                        onChange={this.props.handleChange} {...otherProps}
+                        autoComplete="current-password"
+                />
                 {this.props.label &&
                     <label className={`${this.props.value.length ? 'shrink' : ''} form-input-label`}>
                         {this.props.label}
