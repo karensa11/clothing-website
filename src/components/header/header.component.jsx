@@ -7,7 +7,7 @@ import {auth} from "../../firebase/firebase.utils";
 import {connect} from "react-redux";
 import * as PropTypes from "prop-types";
 import CartIcon from "../cart-icon/cart-icon.component";
-import CartDropdown from "../cart/cart-dropdown.component";
+import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 
 class Header extends Component {
     render() {
