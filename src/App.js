@@ -38,19 +38,17 @@ class App extends Component {
 
     render() {
         return (
-            <BrowserRouter>
-                <div className="content">
-                    <Header />
-                    <Switch>
-                        <Route exact path="/" component={HomePage} />
-                        <Route exact path="/shop" component={ShopPage} />
-                        <Route exact path="/checkout" component={CheckoutPage} />
-                        <Route exact path="/signIn" render={() => this.props.currentUser ?
-                                <Redirect to="/" /> : <SignInAndSignUpPage />
-                        } />
-                    </Switch>
-                </div>
-            </BrowserRouter>
+            <div className="content">
+                <Header />
+                <Switch>
+                    <Route exact path="/" component={HomePage} />
+                    <Route exact path="/shop" component={ShopPage} />
+                    <Route exact path="/checkout" component={CheckoutPage} />
+                    <Route exact path="/signIn" render={() => this.props.currentUser ?
+                            <Redirect to="/" /> : <SignInAndSignUpPage />
+                    } />
+                </Switch>
+            </div>
         );
     }
 }
