@@ -1,15 +1,16 @@
 import React, {Component} from 'react';
 import {BrowserRouter, Switch, Route, Redirect} from "react-router-dom";
 import './App.css';
-import HomepageComponent from "./pages/homepage/homepage.component";
-import ShopComponent from "./pages/shop/shop.component";
 import Header from "./components/header/header.component";
-import SignInAndSignUp from "./pages/sign-in-and-sign-up/sign-in-and-sign-up.component";
+import HomePage from "./pages/homepage/homepage.component";
+import ShopPage from "./pages/shop/shop.component";
+import SignInAndSignUpPage from "./pages/sign-in-and-sign-up/sign-in-and-sign-up.component";
 import {auth, createUserProfileDocument} from "./firebase/firebase.utils";
 import {connect} from "react-redux";
 import * as userActions from "./redux/user/user-actions";
 import {currentUserSelector} from "./redux/user/user-selector";
 import {createStructuredSelector} from "reselect";
+import CheckoutPage from "./pages/checkout/checkout.component";
 
 class App extends Component {
     unsubscribeFromAuth = null;
@@ -41,10 +42,11 @@ class App extends Component {
                 <div className="content">
                     <Header />
                     <Switch>
-                        <Route exact path="/" component={HomepageComponent}/>
-                        <Route exact path="/shop" component={ShopComponent}/>
+                        <Route exact path="/" component={HomePage} />
+                        <Route exact path="/shop" component={ShopPage} />
+                        <Route exact path="/checkout" component={CheckoutPage} />
                         <Route exact path="/signIn" render={() => this.props.currentUser ?
-                                <Redirect to="/" /> : <SignInAndSignUp />
+                                <Redirect to="/" /> : <SignInAndSignUpPage />
                         } />
                     </Switch>
                 </div>
@@ -59,7 +61,7 @@ const mapStateToProps = createStructuredSelector({
 
 const mapDispatchToProps = (dispatch) => ({
     setCurrentUser: (user) => dispatch(userActions.setCurrentUser(user)),
-    removeCurrentUser: (user) => dispatch(userActions.removeCurrentUser())
+    removeCurrentUser: () => dispatch(userActions.removeCurrentUser())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

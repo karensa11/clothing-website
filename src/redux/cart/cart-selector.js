@@ -17,3 +17,9 @@ export const cartItemsCountSelector = createSelector(
     cartItems =>
         cartItems.reduce((aggregator, item) => aggregator + item.quantity, 0)
 );
+
+export const cartTotalSelector = createSelector(
+    [cartItemsSelector],
+    cartItems =>
+        cartItems.reduce((aggregator, item) => aggregator + item.quantity * item.price, 0)
+)
