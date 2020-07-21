@@ -6,9 +6,23 @@ export function toggleCartHidden() {
     }
 }
 
-export function addItemToCart(item) {
+export function addItem(item) {
     return {
-        type: CartTypes.ADD_ITEM_TO_CART,
+        type: CartTypes.ADD_ITEM,
+        payload: item
+    }
+}
+
+export function removeItem(item) {
+    return {
+        type: CartTypes.REMOVE_ITEM,
+        payload: item
+    }
+}
+
+export function removeItemFromCart(item) {
+    return {
+        type: CartTypes.REMOVE_ITEM_FROM_CART,
         payload: item
     }
 }

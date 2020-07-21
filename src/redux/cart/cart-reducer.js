@@ -14,10 +14,20 @@ const reducer = (state=INITIAL_STATE, action) => {
                 ...state,
                 hidden: !state.hidden
             };
-        case CartTypes.ADD_ITEM_TO_CART:
+        case CartTypes.ADD_ITEM:
             return {
                 ...state,
-                cartItems: cartUtils.addItemToCart(state.cartItems, payload)
+                cartItems: cartUtils.addItem(state.cartItems, payload)
+            };
+        case CartTypes.REMOVE_ITEM:
+            return {
+                ...state,
+                cartItems: cartUtils.removeItem(state.cartItems, payload)
+            };
+        case CartTypes.REMOVE_ITEM_FROM_CART:
+            return {
+                ...state,
+                cartItems: cartUtils.removeItemFromCart(state.cartItems, payload)
             };
         default:
             return state;

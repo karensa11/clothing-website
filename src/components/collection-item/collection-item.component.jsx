@@ -28,7 +28,7 @@ function CollectionItem
 }
 
 const mapDispatchToProps = dispatch => ({
-    addItemTooCart: item => dispatch(cartActions.addItemToCart(item))
+    addItemTooCart: item => dispatch(cartActions.addItem(item))
 });
 
 export default connect(null, mapDispatchToProps)(CollectionItem);

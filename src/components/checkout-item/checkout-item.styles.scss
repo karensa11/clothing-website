@@ -10,6 +10,7 @@
   .image-container {
     width: 23%;
     padding-right: 15px;
+    height: 180px;
 
     img {
       width: 100%;
@@ -22,13 +23,21 @@
     width: 23%;
     text-align: center;
   }
-
   .quantity {
-    padding-left: 20px;
+    display: flex;
+    justify-content: center;
+
+    .arrow {
+      cursor: pointer;;
+    }
+
+    .value {
+      margin: 0 10px;
+    }
   }
 
   .remove-button {
-    padding-left: 12px;
     cursor: pointer;
+    padding-left: 25px;
   }
 }
