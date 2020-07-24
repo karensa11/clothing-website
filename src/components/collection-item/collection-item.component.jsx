@@ -10,6 +10,7 @@ function CollectionItem
      addItemTooCart
  })
 {
+    console.log(item);
     const {name, price, imageUrl} = item;
     return (
         <div className="collection-item">

@@ -1,18 +1,13 @@
 import React from "react";
-import collections from "../../data/shop-items.data";
-import CollectionPreviewComponent from "../../components/collection-preview/collection-preview.component";
+import CollectionsOverview from "../../components/collections-overview/collections-overview.component";
+import {Route, Switch} from "react-router-dom";
+import Collection from "../../components/collection/collection.component";
 
-export default function ShopPage() {
+export default function ShopPage({match}) {
     return (
-        <div>
-            {collections.map(({id, ...collection}) => {
-                return (
-                    <CollectionPreviewComponent
-                        key={id}
-                        {...collection}
-                    />
-                )
-            })}
-        </div>
+        <Switch>
+            <Route exact path={`${match.path}`} component={CollectionsOverview} />
+            <Route exact path={`${match.path}/:collectionId`} component={Collection} />
+        </Switch>
     )
 }
