@@ -1,12 +1,16 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./checkout.styles.scss";
 import {connect} from "react-redux";
 import {createStructuredSelector} from "reselect";
 import {cartItemsSelector, cartTotalSelector} from "../../redux/cart/cart-selector";
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
 import StripeButton from "../../components/stripe-button/stripe-button.component";
+import {updateDocumentTitle} from "../../utils";
 
 function CheckoutPage({cartItems, cartTotal}) {
+    useEffect(() => {
+        updateDocumentTitle("Checkout");
+    });
     return (
         <div className="checkout-page">
             <div className="checkout-header">
